@@ -16,10 +16,10 @@ Twitter::$cacheDir = $cache_dir;
 Twitter::$cacheExpire = 60;
 
 $twitter = new Twitter(
-    $config['apiKey'],
-    $config['apiSecret'],
-    $config['accessToken'],
-    $config['accessTokenSecret']
+    $config['api_key'],
+    $config['api_secret'],
+    $config['access_token'],
+    $config['access_token_secret']
 );
 
 function json_response($data) {
@@ -29,7 +29,7 @@ function json_response($data) {
 
 function get_tweets() {
     global $twitter, $config;
-    return $twitter->load(Twitter::ME, 100, array('screen_name' => $config['accountName']));
+    return $twitter->load(Twitter::ME, 100);
 }
 
 $app->get('/', function() use ($config, $twig, $twitter) {
@@ -41,10 +41,14 @@ $app->get('/tweets', function() use ($config, $twitter) {
     json_response($results);
 });
 
-$app->get('/submit', function() use ($config) {
-    echo 'form';
+$app->get('/submit', function() use ($config, $twig) {
+    $twig->display('form.twig');
 });
 
-$app->post('/submit', function() use ($config, $twitter) {
-    echo 'blah';
+$app->post('/submit', function() use ($app, $config, $twitter) {
+    $tweet = $app->request->post('tweet');
+    if (strlen($tweet) <= 140) {
+        $twitter->send($tweet);
+    }
+    $app->redirect('/');
 });
