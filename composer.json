@@ -8,8 +8,7 @@
         }
     ],
     "require": {
-        "silex/silex": "~1.2",
-        "guzzlehttp/guzzle": "~4.0",
+        "slim/slim": "~2.4",
         "dg/twitter-php": "~3.3"
     }
 }
