@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+#tweets {
+    margin: 200px auto;
+    width: 80%;
+    font-size: 4em;
+}
+
+#tweets .tweet {
+    /*margin: 0 auto;*/
+    display: none;
+}
+
+#tweets .tweet:first-of-type {
+    display:block;
+}
+
+#nav {
+    background-color: rgba(0, 0, 0, .1);
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+}
+
+#nav a {
+    color: #000;
+    text-decoration: none;
+}
+
+#nav a:hover {
+    text-decoration: underline;
+}
