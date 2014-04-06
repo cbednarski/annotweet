@@ -9,6 +9,7 @@
     ],
     "require": {
         "slim/slim": "~2.4",
-        "dg/twitter-php": "~3.3"
+        "dg/twitter-php": "~3.3",
+        "twig/twig": "1.*"
     }
 }
