@@ -1,1 +1,11 @@
-index
+{% extends 'layout.twig' %}
+
+{% block title %}Tweets{% endblock %}
+
+{% block content %}
+<div id="tweets">
+    {% for tweet in tweets %}
+        <div class="tweet">{{ tweet.text }}</div>
+    {% endfor %}
+</div>
+{% endblock %}
