@@ -1,7 +1,7 @@
 <?php
 
-require_once(__DIR__ . '/vendor/autoload.php');
-require_once(__DIR__ . '/config.php');
+require_once(__DIR__ . '/../vendor/autoload.php');
+require_once(__DIR__ . '/../config.php');
 
 $app = new \Slim\Slim();
 
@@ -36,5 +36,3 @@ $app->get('/submit', function() use ($config) {
 $app->post('/submit', function() use ($config, $twitter) {
     echo 'blah';
 });
-
-$app->run();
