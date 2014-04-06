@@ -1,0 +1,13 @@
+{
+    "name": "cbednarski/twitterandy",
+    "description": "Twitter submission and viewing page",
+    "authors": [
+        {
+            "name": "Chris Bednarski",
+            "email": "banzaimonkey@gmail.com"
+        }
+    ],
+    "require": {
+
+    }
+}
