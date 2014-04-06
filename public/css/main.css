@@ -18,6 +18,10 @@ body {
     display:block;
 }
 
+.error {
+    color: #f00;
+}
+
 #nav {
     background-color: rgba(0, 0, 0, .1);
     position: fixed;
