@@ -5,14 +5,17 @@ require_once(__DIR__ . '/../config.php');
 
 $app = new \Slim\Slim();
 
-$cache_dir = __DIR__ . '/../cache';
+if (!is_dir($config['cache_dir'])) {
+    mkdir($config['cache_dir'], 0755);
+}
 
 $twig_loader = new Twig_Loader_Filesystem(__DIR__ . '/templates');
 $twig = new Twig_Environment($twig_loader, array(
     // 'cache' => $cache_dir
 ));
+$twig->addGlobal('base_url', $config['base_url']);
 
-Twitter::$cacheDir = $cache_dir;
+Twitter::$cacheDir = $config['cache_dir'];
 Twitter::$cacheExpire = 60;
 
 $twitter = new Twitter(
@@ -70,17 +73,17 @@ $app->get('/submit', function() use ($config, $twig) {
     $twig->display('form.twig');
 });
 
-$app->post('/submit', function() use ($app, $config, $twitter, $twig, $cache_dir) {
+$app->post('/submit', function() use ($app, $config, $twitter, $twig) {
     $tweet = $app->request->post('tweet');
     if (strlen($tweet) <= 140) {
         try {
             $response = $twitter->send($tweet);
             if (property_exists($response, 'text') && $response->text === $tweet) {
-                prepend_cache($cache_dir, $response);
+                prepend_cache($config['cache_dir'], $response);
             }
         } catch(TwitterException $e) {
             $twig->display('form.twig', array('error' => $e->getMessage()));
         }
     }
-    $app->redirect('/');
+    $app->redirect($config['base_url'] . '/');
 });
