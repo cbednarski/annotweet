@@ -3,6 +3,9 @@
 {% block title %}Submit a Tweet{% endblock %}
 
 {% block content %}
+{% if error %}
+<p class="error">{{ error }}</p>
+{% endif %}
 <form action="/submit" method="POST">
     <input type="text" name="tweet" maxlength="140" />
     <input type="submit" />
