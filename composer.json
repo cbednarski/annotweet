@@ -9,6 +9,7 @@
     ],
     "require": {
         "silex/silex": "~1.2",
-        "guzzlehttp/guzzle": "~4.0"
+        "guzzlehttp/guzzle": "~4.0",
+        "dg/twitter-php": "~3.3"
     }
 }
