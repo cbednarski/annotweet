@@ -1,5 +1,12 @@
 <?php
 
+// To configure this file, create an app here: https://apps.twitter.com/app/new
+// You will need to set your application's access level to Read and Write BEFORE
+// you generate your access tokens.
+
 $config = array(
-    ''
+    'apiKey' => '',
+    'apiSecret' => '',
+    'accessToken' => '',
+    'accessTokenSecret' => '',
 );
