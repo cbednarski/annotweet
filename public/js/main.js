@@ -53,7 +53,6 @@ function getRandomBag() {
     var unused = [];
 
     if (tweets.length == bag.length) {
-        console.log('reset');
         bag = [];
     }
 
@@ -80,6 +79,7 @@ function update() {
 
 jQuery(document).ready(function() {
     tweet = jQuery('#tweet');
+    update();
 
     window.setInterval(update, 60000);
 });
