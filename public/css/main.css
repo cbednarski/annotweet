@@ -6,19 +6,13 @@ body {
     margin: 0;
 }
 
-#tweets {
+#tweet {
     margin: 200px auto;
     width: 80%;
     font-size: 4em;
-}
-
-#tweets .tweet {
-    /*margin: 0 auto;*/
-    display: none;
-}
-
-#tweets .tweet:first-of-type {
-    display:block;
+    text-align: center;
+    -webkit-transition: opacity 1s, -webkit-transform 1s;
+    transition:width opacity 1s, transform 1s;
 }
 
 .error {

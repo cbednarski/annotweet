@@ -65,7 +65,7 @@ $app->get('/', function() use ($app, $config) {
 });
 
 $app->get('/tweets', function() use ($config, $twig, $twitter) {
-    $twig->display('index.twig', array('tweets' => get_tweets()));
+    $twig->display('wall.twig', array('tweets' => get_tweets()));
 });
 
 $app->get('/tweets-data', function() use ($config, $twitter) {
