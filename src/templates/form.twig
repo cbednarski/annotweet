@@ -6,8 +6,8 @@
 {% if error %}
 <p class="error">{{ error }}</p>
 {% endif %}
-<form action="{{ base_url }}/submit" method="POST">
-    <input type="text" name="tweet" maxlength="140" />
-    <input type="submit" />
+<form id="post" action="{{ base_url }}/submit" method="POST">
+    <p><textarea id="post-input" type="text" name="tweet" maxlength="140" placeholder="Type here" /></textarea></p>
+    <p><input id="post-submit" type="submit" value="Post" /></p>
 </form>
 {% endblock %}
