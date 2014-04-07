@@ -60,11 +60,15 @@ function get_tweets()
     return $twitter->load(Twitter::ME, 100);
 }
 
-$app->get('/', function() use ($config, $twig, $twitter) {
+$app->get('/', function() use ($app, $config) {
+    $app->redirect($config['base_url'] . '/submit');
+});
+
+$app->get('/tweets', function() use ($config, $twig, $twitter) {
     $twig->display('index.twig', array('tweets' => get_tweets()));
 });
 
-$app->get('/tweets', function() use ($config, $twitter) {
+$app->get('/tweets-data', function() use ($config, $twitter) {
     $results = get_tweets();
     json_response($results);
 });
@@ -85,5 +89,5 @@ $app->post('/submit', function() use ($app, $config, $twitter, $twig) {
             $twig->display('form.twig', array('error' => $e->getMessage()));
         }
     }
-    $app->redirect($config['base_url'] . '/');
+    $app->redirect($config['base_url'] . '/submit');
 });
