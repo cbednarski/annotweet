@@ -12,6 +12,7 @@ function getTweetsUrl() {
 
 function getTweets() {
     jQuery.getJSON(getTweetsUrl(), function(data) {
+        data.reverse();
         tweets = data;
     });
 }
