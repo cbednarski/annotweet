@@ -5,6 +5,7 @@ var tweet = null;
 var tweet_text = null;
 var tweet_time = null;
 var bag = [];
+var showtime = 15; // Time in seconds between tweet rotation
 
 function getTweetsUrl() {
     var t = window.location.pathname.split('/');
@@ -95,5 +96,5 @@ jQuery(document).ready(function() {
     tweet_time = jQuery('#tweet-time');
     update();
 
-    window.setInterval(update, 20000);
+    window.setInterval(update, showtime * 1000);
 });
