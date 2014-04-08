@@ -1,5 +1,5 @@
 * {
-    font-family: 'HelveticaNeueW01-55Roma', Helvetica, Arial, sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 body {
@@ -9,10 +9,18 @@ body {
 #tweet {
     margin: 200px auto;
     width: 80%;
-    font-size: 4em;
     text-align: center;
     -webkit-transition: opacity 1s, -webkit-transform 1s;
     transition:width opacity 1s, transform 1s;
+}
+
+#tweet-text {
+    font-size: 4em;
+}
+
+#tweet-time {
+    font-size: 2em;
+    color: #aaa;
 }
 
 .error {

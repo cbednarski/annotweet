@@ -2,6 +2,8 @@
 
 var tweets = [];
 var tweet = null;
+var tweet_text = null;
+var tweet_time = null;
 var bag = [];
 
 function getTweetsUrl() {
@@ -10,10 +12,14 @@ function getTweetsUrl() {
     return t.join('/') + '/tweets-data';
 }
 
+function filterNew(tweet) {
+    return (Date.now() - Date.parse(tweet.created_at) > 3600000);
+}
+
 function getTweets() {
     jQuery.getJSON(getTweetsUrl(), function(data) {
         data.reverse();
-        tweets = data;
+        tweets = data.filter(filterNew);;
     });
 }
 
@@ -27,8 +33,14 @@ function scaleUp() {
     tweet.css('opacity', '1');
 }
 
+function convertDate(date) {
+    return moment(date).tz('America/Los_Angeles').format('dddd MMM Do h:mm a');
+}
+
 function replaceText() {
-    tweet.html(tweets[getRandomBag()].text);
+    var random = getRandomBag();
+    tweet_text.html(tweets[random].text);
+    tweet_time.html('Posted ' + convertDate(tweets[random].created_at));
 }
 
 function has(set, item) {
@@ -47,7 +59,7 @@ function getRandomInt(min, max) {
 /**
  * This function returns a random index for the tweets array that has not
  * already been displayed. Once all tweets have been displayed it resets. This
- * ensures an even distribution of show time for each tweet in the collection.
+ * ensures an even distribution of showtime for each tweet in the collection.
  */
 function getRandomBag() {
     var unused = [];
@@ -79,7 +91,9 @@ function update() {
 
 jQuery(document).ready(function() {
     tweet = jQuery('#tweet');
+    tweet_text = jQuery('#tweet-text');
+    tweet_time = jQuery('#tweet-time');
     update();
 
-    window.setInterval(update, 60000);
+    window.setInterval(update, 20000);
 });
