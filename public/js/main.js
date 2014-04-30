@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var tweets = [];
 var tweet = null;
